@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tuition Media</title>
+</head>
+<body>
+
+<h1>Tuition Media Home</h1>
+
+<p>Django is working successfully.</p>
+
+{% for tuition in tuitions %}
+
+<h3>{{ tuition.title }}</h3>
+
+{% empty %}
+
+<p>No tuition posts found.</p>
+
+{% endfor %}
+
+</body>
+</html>
