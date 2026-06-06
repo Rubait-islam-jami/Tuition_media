@@ -4,7 +4,10 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class TutorProfile(models.Model):
-    user= models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(
+    User,
+    on_delete=models.CASCADE
+)
     full_name = models.CharField(max_length=100)
     university = models.CharField(max_length=100)
     department = models.CharField(max_length=100)

@@ -1,3 +1,18 @@
-from django.shortcuts import render
+@login_required
+def my_applications(request):
 
-# Create your views here.
+    tutor = TutorProfile.objects.get(
+        user=request.user
+    )
+
+    applications = Application.objects.filter(
+        tutor=tutor
+    )
+
+    return render(
+        request,
+        'my_applications.html',
+        {
+            'applications': applications
+        }
+    )

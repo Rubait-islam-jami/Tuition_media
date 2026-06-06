@@ -1,18 +1,17 @@
-from django.shortcuts import render, redirect
-from .forms import TuitionPostForm
+from django.shortcuts import get_object_or_404
+from .models import TuitionPost
 
-def post_tuition(request):
+def tuition_detail(request, pk):
 
-    form = TuitionPostForm()
+    tuition = get_object_or_404(
+        TuitionPost,
+        pk=pk
+    )
 
-    if request.method == 'POST':
-
-        form = TuitionPostForm(request.POST)
-
-        if form.is_valid():
-
-            form.save()
-
-            return redirect('/')
-
-    return render(request, 'post_tuition.html', {'form': form})
+    return render(
+        request,
+        'tuition_detail.html',
+        {
+            'tuition': tuition
+        }
+    )
